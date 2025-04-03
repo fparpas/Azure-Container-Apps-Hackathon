@@ -37,11 +37,21 @@ Scaling is driven by three different categories of triggers:
     - HTTP scale rule concurrency: 5
     - Target port: 8080
 - Simulate load to trigger autoscaling with bash shell or powershell 
-```bash Bash Shell
-seq 1 50 | xargs -Iname -P10 curl "<YOUR_CONTAINER_APP_FQDN>"
+```bash
+  # Simulate load to trigger autoscaling with bash shell.
+  seq 1 100 | xargs -Iname -P10 curl "<YOUR_CONTAINER_APP_FQDN>"
 ```
-```powershell Powershell
-seq 1 50 | xargs -Iname -P10 curl "<YOUR_CONTAINER_APP_FQDN>"
+```powershell
+ # Simulate load to trigger autoscaling with powershell.
+  $url="<YOUR_CONTAINER_APP_FQDN>"
+  $Runspace = [runspacefactory]::CreateRunspacePool(1,10)
+  $Runspace.Open()
+  1..100 | % {
+      $ps = [powershell]::Create()
+      $ps.RunspacePool = $Runspace
+      [void]$ps.AddCommand("Invoke-WebRequest").AddParameter("UseBasicParsing",$true).AddParameter("Uri",$url)
+      [void]$ps.BeginInvoke()
+  }
 ```
 - Analyze what happens during scale-out and scale-in events.
 
