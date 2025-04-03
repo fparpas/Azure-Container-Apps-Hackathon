@@ -19,17 +19,19 @@ A job's trigger type determines how the job is started. The following trigger ty
 
     In an app, each replica continuously processes events and a scaling rule determines the number of replicas to run to meet demand. In event-driven jobs, each job execution typically processes a single event, and a scaling rule determines the number of job executions to run.
 
-    > [!TIP]
-    > Use jobs when each event requires a new instance of the container with dedicated resources or needs to run for a long time. Event-driven jobs are conceptually similar to KEDA scaling jobs.
+> [!TIP]
+> Use jobs when each event requires a new instance of the container with dedicated resources or needs to run for a long time. Event-driven jobs are conceptually similar to KEDA scaling jobs.
 
 ## Description
 - Create a scheduled job that runs every 1 minute by using the public image mcr.microsoft.com/k8se/quickstart-jobs:latest. 
 - This container image is a public sample container image that runs a job that waits a few seconds, prints a message to the console, and then exits.
 - Check the schedules job output and status.
+- Trigger the scheduled task manually
 
 ## Success Criteria
-- A job is successfully scheduled and executed.
-- The task completes and its output is verifiable.
+- Verify that the job is successfully scheduled and executed in execution history.
+- The task completes and its console output is verifiable.
+- List with Azure CLI the recent job execution history.
 
 ## Learning Resources
 - [Jobs in Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/jobs)

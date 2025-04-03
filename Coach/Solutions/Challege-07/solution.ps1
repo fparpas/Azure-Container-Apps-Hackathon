@@ -14,3 +14,10 @@ az containerapp job create `
 --cpu "0.25" `
 --memory "0.5Gi" `
 --cron-expression "*/1 * * * *"
+
+#List the recent job execution history
+az containerapp job execution list `
+    --name $CONTAINERJOB  `
+    --resource-group "$RESOURCE_GROUP" `
+    --output table `
+    --query '[].{Status: properties.status, Name: name, StartTime: properties.startTime}'
