@@ -1,5 +1,7 @@
 # Challenge 05 - Scaling your application
 
+ [< Previous Challenge](./Challenge-04.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-06.md)
+
 ## Introduction
 Modern applications must scale seamlessly to match demand. In this challenge, you will explore the scaling mechanisms in Azure Container Apps, to ensure resiliency under load.
 
@@ -30,11 +32,15 @@ Scaling is driven by three different categories of triggers:
 - Create and deploy your container app by using a public container image, mcr.microsoft.com/dotnet/samples:aspnetapp.
 - Make your container app available to public requests.
 - Configure autoscaling rules based on HTTP scaling rule with the following configuration
-    - Min replicas: 5
-    - Max replicas: 5
-    - HTTP scale rule concurrency: 1
-- Simulate load to trigger autoscaling. Open a new bash shell and run the following command
-```bash
+    - Min replicas: 1
+    - Max replicas: 10
+    - HTTP scale rule concurrency: 5
+    - Target port: 8080
+- Simulate load to trigger autoscaling with bash shell or powershell 
+```bash Bash Shell
+seq 1 50 | xargs -Iname -P10 curl "<YOUR_CONTAINER_APP_FQDN>"
+```
+```powershell Powershell
 seq 1 50 | xargs -Iname -P10 curl "<YOUR_CONTAINER_APP_FQDN>"
 ```
 - Analyze what happens during scale-out and scale-in events.
