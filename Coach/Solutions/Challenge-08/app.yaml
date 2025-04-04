@@ -1,0 +1,24 @@
+template:
+  containers:
+  - image: nginx
+    name: aca-workshop-datavolumes
+    resources:
+      cpu: 0.5
+      ephemeralStorage: 2Gi
+      memory: 1Gi
+    volumeMounts:
+    - volumeName: aca-file-volume
+      mountPath: /var/log/nginx
+  initContainers: null
+  revisionSuffix: ''
+  scale:
+    maxReplicas: 1
+    minReplicas: 1
+    rules: null
+  serviceBinds: null
+  terminationGracePeriodSeconds: null
+  volumes: 
+  - name: aca-file-volume
+    storageName: acastoragemount
+    storageType: AzureFile
+
