@@ -14,5 +14,5 @@ To achieve agile development, it is essential to automate your builds and deploy
 - The container app updates seamlessly based on the CI/CD process.
 
 ## Learning Resources
-- [GitHub Actions for Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/ci-cd-github-actions)
+- [GitHub Actions for Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/github-actions)
 - [Introduction to GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions)
