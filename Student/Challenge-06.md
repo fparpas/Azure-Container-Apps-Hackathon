@@ -1,5 +1,7 @@
 # Challenge 06 - Networking and Ingress
 
+ [< Previous Challenge](./Challenge-05.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-07.md)
+
 ## Introduction
 For your container app to serve users, it needs to be accessible over the network. This challenge will walk you through configuring networking and ingress rules to expose your app.
 
