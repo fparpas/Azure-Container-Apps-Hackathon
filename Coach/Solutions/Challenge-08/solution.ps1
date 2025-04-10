@@ -8,8 +8,6 @@ $STORAGE_ACCOUNT_NAME="acawstorageaccount$(Get-Random -Maximum 10000)"
 $STORAGE_SHARE_NAME="acawfileshare"
 $STORAGE_MOUNT_NAME="acastoragemount"
 
-# Deploy container app with HTTP scaling
-
 # Create Azure Storage Account for the container app
 az storage account create `
   --resource-group $RESOURCE_GROUP `
