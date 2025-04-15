@@ -7,7 +7,46 @@ Azure Container Apps allows you to use GitHub Actions to publish revisions to yo
 
 ![CI/CD Diagram](./Resources/Challenge-10/cicd-diagram.png)
 
+The GitHub Actions workflow is triggered by commits to a specific branch in your repository. When creating the workflow, you decide which branch triggers the workflow.
+
+The action supports the following scenarios:
+- Build from a Dockerfile and deploy to Container Apps
+- Build from source code without a Dockerfile and deploy to Container Apps. Supported languages include .NET, Java, - Node.js, PHP, and Python
+- Deploy an existing container image to Container Apps
+
+### Build and deploy to Container Apps
+The following snippet shows how to build a container image from source code and deploy it to Container Apps.
+```yaml
+name: Azure Container Apps Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Log in to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Build and deploy Container App
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }}/src
+          acrName: <ACR_NAME>
+          containerAppName: my-container-app
+          resourceGroup: my-container-app-rg
+```
 ## Description
+- Configure secrets in your GitHub repository
+- Create an Azure Container Registry and manage access accordingly
 - Create a GitHub Actions workflow file in your repository.
 - Configure the workflow to build your container image and deploy it to Azure Container Apps.
 - Test the workflow by pushing a code change and verifying a new deployment.
