@@ -1,25 +1,50 @@
-# Challenge 06 - Dapr and Service Invocation
+# Challenge 11 - Dapr and Service Invocation
+
+ [< Previous Challenge](./Challenge-10.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-12.md)
 
 ## Introduction
-Dapr (Distributed Application Runtime) is an open-source, portable runtime that simplifies building microservices by abstracting common patterns such as state management, pub/sub, and service invocation. In this challenge, you will integrate Dapr into your containerized applications to enable secure and reliable service-to-service communication. By leveraging Dapr’s service invocation building block, you'll learn how to offload common communication logic from your application code, making your microservices more resilient and easier to manage.
+Dapr (Distributed Application Runtime) is an open-source, portable runtime that simplifies building microservices by abstracting common patterns such as state management, pub/sub, and service invocation. 
+
+In this challenge, you will create publisher and subscriber microservices that leverage the Dapr Pub/sub API to communicate using messages for event-driven architectures. 
+
+![Dapr Pub/Sub](Resources/Challenge-11/pubsub-quickstart.png)
+
+In this challenge you will do the following:
+- Use a **Publisher** microservice that generates and sends messages (such as order checkout events) to a specific topic.
+- Use a **Subscriber** microservice that listens for these messages from Azure Service Bus and processes them (for example, to process orders).
+- Deploy the application to Azure Container Apps via the Azure Developer CLI with provided Bicep
+- Verify end-to-end messaging by triggering the publisher and confirming that the subscriber receives and processes the messages.
+
+You shall use [this sample pub/sub project](https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus) which includes:
+- A message generator checkout service (publisher) that generates messages of a specific topic.
+- An order-processor service (subscriber) that listens for messages from the checkout service of a specific topic.
+
+In this sample project, you'll create a publisher microservice and a subscriber microservice to demonstrate how Dapr enables a publish-subcribe pattern. The publisher will generate messages of a specific topic, while subscribers will listen for messages of specific topics
 
 ## Description
-- **Set Up Dapr:**  
-  - Deploy your container app with Dapr enabled. This involves modifying your deployment configuration to include the Dapr sidecar.
-- **Implement Service Invocation:**  
-  - Create two microservices: a caller and a callee. The callee should expose an endpoint (e.g., `/process`) that the caller can invoke.
-  - Configure your caller service to use Dapr’s HTTP service invocation API (e.g., `http://localhost:<daprPort>/v1.0/invoke/<callee-app-id>/method/process`) to call the callee endpoint.
-- **Testing and Verification:**  
-  - Verify that the service invocation works as expected by triggering the caller service, which should in turn successfully invoke the callee’s endpoint.
-  - Monitor the logs to see the invocation trace and confirm that Dapr has correctly routed the request between services.
+- **Configure Dapr for Azure Service Bus Pub/Sub:**  
+  - Install all necessary prerequisites
+  - Create or update a Dapr component YAML file that configures Azure Service Bus as the pub/sub broker.
+  - The configuration should include the connection string and other required settings for Azure Service Bus.
 
+- **Develop or use sample Microservices:**  
+  - **Publisher Service:** Implement or use the sample microservice that uses Dapr’s HTTP API to publish messages to a designated topic. For example, the service could send order checkout events.
+  - **Subscriber Service:** Implement or use the sample microservice that subscribes to the same topic. The Dapr sidecar will forward published messages from Azure Service Bus to this service for processing.
+
+- **Deployment:**  
+  - Package your microservices and deploy them to Azure Container Apps with Dapr enabled.
+  OR
+  - Use the sample project provided to deploy the application template using Azure Developer CLI
+  
 ## Success Criteria
-- Dapr is properly enabled for your container app.
-- The caller service can successfully invoke the callee’s endpoint using Dapr’s service invocation API.
-- Logs confirm that requests are being routed through Dapr, and the expected responses are received.
-- You document any configuration changes (e.g., Dapr annotations) made to enable the sidecar and service invocation.
+- The publisher microservice successfully publishes messages to the specified topic using Dapr’s API.
+- The subscriber microservice receives and processes the messages, with confirmation via logs or telemetry.
+- The microservices are deployed to Azure Container Apps with Dapr enabled and properly configured for pub/sub messaging.
+- Validate that the entire message flow is handled by Dapr and Azure Service Bus, ensuring reliable event-driven communication.
 
 ## Learning Resources
-- [Dapr Service Invocation](https://docs.dapr.io/developing-applications/building-blocks/service-invocation/)
-- [Getting Started with Dapr](https://docs.dapr.io/getting-started/)
+- [Tutorial: Microservices communication using Dapr Publish and Subscribe](https://learn.microsoft.com/en-us/azure/container-apps/microservices-dapr-pubsub?tabs=windows&pivots=csharp)
 - [Using Dapr with Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/)
+- [Getting Started with Dapr](https://docs.dapr.io/getting-started/)
+- [GitHub Dapr Quickstarts](https://github.com/dapr/quickstarts)
+- [Dapr Quickstarts](https://docs.dapr.io/getting-started/quickstarts/)
