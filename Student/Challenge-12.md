@@ -1,5 +1,7 @@
 # Challenge 12 - Implement an Event-Driven App with KEDA & RabbitMQ
 
+ [< Previous Challenge](./Challenge-12.md) - **[Home](../README.md)**
+
 ## Introduction
 Capitalize on the event-driven architecture of Azure Container Apps by integrating KEDA (Kubernetes-based Event Driven Autoscaling) with RabbitMQ. In this final challenge, you’ll build an application that responds to message queues, demonstrating real-time processing and dynamic scaling based on event load.
 

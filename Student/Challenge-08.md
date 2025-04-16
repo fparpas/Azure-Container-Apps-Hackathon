@@ -1,5 +1,7 @@
 # Challenge 08 - Data Volumes with Azure Files
 
+ [< Previous Challenge](./Challenge-07.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-09.md)
+
 ## Introduction
 Many applications requires storage. Azure Container Apps support ephemeral storage and mounting Azure Files as data volumes. In this challenge, you will enable persistent storage for your containerized app.
 

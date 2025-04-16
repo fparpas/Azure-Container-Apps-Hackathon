@@ -1,5 +1,7 @@
 # Challenge 09 - Adding Environment Variables and Secrets
 
+ [< Previous Challenge](./Challenge-08.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-10.md)
+
 ## Introduction
 Securely setting configuration values is key to robust applications. You will learn how to pass environment variables and manage secrets in your container apps, reducing hard-coded configurations.
 
