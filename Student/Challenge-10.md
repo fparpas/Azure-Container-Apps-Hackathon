@@ -1,5 +1,7 @@
 # Challenge 10 - Implementing CI/CD with GitHub Actions
 
+ [< Previous Challenge](./Challenge-09.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-11.md)
+
 ## Introduction
 To achieve agile development, it is essential to automate your builds and deployments. In this challenge, you will create a GitHub Actions workflow that automatically builds and deploys your container app upon code changes.
 
@@ -44,15 +46,21 @@ jobs:
           containerAppName: my-container-app
           resourceGroup: my-container-app-rg
 ```
+> [!NOTE]
+> The GitHub workflow requires a secret named AZURE_CREDENTIALS to authenticate with Azure, which has the necessary access to Azure Container Registry and Azure Container Apps
+
 ## Description
 - Configure secrets in your GitHub repository
 - Create an Azure Container Registry and manage access accordingly
 - Create a GitHub Actions workflow file in your repository.
+>[!TIP]
+> You can create a GitHub repository from the following sample: https://github.com/Azure-Samples/containerapps-albumapi-csharp/generate
+> The repository contains all project files to build and deploy the application
 - Configure the workflow to build your container image and deploy it to Azure Container Apps.
 - Test the workflow by pushing a code change and verifying a new deployment.
 
 ## Success Criteria
-- A GitHub Actions pipeline is established.
+- A GitHub Actions run completed succesfully.
 - Code changes automatically trigger a build and deployment.
 - The container app updates seamlessly based on the CI/CD process.
 
