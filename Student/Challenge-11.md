@@ -1,4 +1,4 @@
-# Challenge 11 - Dapr and Service Invocation
+# Challenge 11 - Publisher and subscriber microservices that leverage the Dapr Pub/sub API
 
  [< Previous Challenge](./Challenge-10.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-12.md)
 
