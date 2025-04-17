@@ -15,7 +15,8 @@ Upon completing the workshop, participants will be able to:
 -	Manage application lifecycle effectively with updates, rollbacks, and revision management.
 -	Configure autoscaling and resiliency to ensure high availability.
 -	Integrate persistent storage using Azure Files and securely manage configuration with environment variables and secrets.
--	Enhance microservices using patterns like Dapr for service invocation and develop event-driven architectures with KEDA.
+-	Create event-driven architectures with Dapr Pub/sub API.
+- Demonstrating real-time processing and dynamic scaling based on event load with KEDA and Service Bus topics.
 -	Establish CI/CD pipelines with GitHub Actions for seamless container app deployments.
 
   
