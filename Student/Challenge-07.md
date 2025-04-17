@@ -1,5 +1,7 @@
 # Challenge 07 - Jobs in Azure Container Apps
 
+ [< Previous Challenge](./Challenge-06.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-08.md)
+
 ## Introduction
 Not every container needs to be a long-running web service. Container Jobs let you run containerized tasks that execute for a finite duration and exit. In this challenge, you will learn how to deploy a container job.
 
