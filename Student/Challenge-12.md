@@ -1,4 +1,4 @@
-# Challenge 12 - Implement an Event-Driven App with KEDA & RabbitMQ
+# Challenge 12 - Implement an Event-Driven App with Dapr and KEDA
 
  [< Previous Challenge](./Challenge-12.md) - **[Home](../README.md)**
 
@@ -29,13 +29,16 @@ For context, refer to the corresponding sample pub/sub applications. In this sam
 
 ## Success Criteria
 - The order-processor subscriber container app can consume events added in Service Bus topic.
-- KEDA is configured to scale your Container App based on real-time topic metrics.
+- Ensure that the Container App can scale based on real-time topic metrics.
+- Ensure that the Container App can scale to 0.
+>[!TIP]
+> You can stop the checkout app to stop sending events in Service Bus topic.
 - The application processes events and logs output as expected.
 
 ## Learning Resources
 
 - [Scale Dapr applications with KEDA scalers](https://learn.microsoft.com/en-us/azure/container-apps/dapr-keda-scaling)
 - [Set scaling rules in Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/scale-app?pivots=azure-portal#custom)
-- [KEDA Overview ](https://keda.sh/)
 - [KEDA Azure Service Bus scaler ](https://keda.sh/docs/2.17/scalers/azure-service-bus/)
+- [KEDA Overview ](https://keda.sh/)
 - [KEDA Scalers](https://keda.sh/docs/2.17/scalers/)
