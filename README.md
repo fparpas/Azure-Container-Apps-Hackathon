@@ -44,55 +44,51 @@ The intended audience os ideal for:
 
 ### Challenge 0: **[Setup and prepare Evironment](Student/Challenge-00.md)**
 
-- Install the required development tools. This initial session is crucial to ensure that all participants are well-prepared and can fully engage with the workshop's content.
+Install the required development tools. This initial session is crucial to ensure that all participants are well-prepared and can fully engage with the workshop's content.
 
 ### Challenge 1: **[Introduction to Azure Container Apps](Student/Challenge-01.md)**
 
-- Overview of Azure Container Apps. A managed, serverless container orchestration service that abstracts away infrastructure concerns.
+Overview of Azure Container Apps. A managed, serverless container orchestration service that abstracts away infrastructure concerns.
 
 ### Challenge 2: **[Deploy Your First Container App.](Student/Challenge-02.md)**
 
-- Deploy your first containerized application by using the Azure CLI or the Portal to deploy a container app from a public registry.
+Deploy your first containerized application by using the Azure CLI or the Portal to deploy a container app from a public registry.
 
 ### Challenge 3: **[Application lifecycle management - Updates and Rollbacks.](Student/Challenge-03.md)**
 
-- Update a Container App and manage its revisions. Experience deploying a new version of your app while retaining the ability to roll back if necessary.
+Update a Container App and manage its revisions. Experience deploying a new version of your app while retaining the ability to roll back if necessary.
 
 ### Challenge 4: **[Operations and Monitoring](Student/Challenge-04.md)**
 
-- When you are building applications, you want to be able to observe the behavior of your services. Observability is the ability to monitor and analyze the internal state of components within a distributed system. It is a key requirement for building enterprise-ready solutions.
+When you are building applications, you want to be able to observe the behavior of your services. Observability is the ability to monitor and analyze the internal state of components within a distributed system. It is a key requirement for building enterprise-ready solutions.
 
 ### Challenge 5: **[Scaling your application](Student/Challenge-05.md)**
 
-- Explore the scaling mechanisms, to ensure resiliency under load. Practice hoe to manage automatic horizontal scaling through a set of declarative scaling rules.
+Explore the scaling mechanisms, to ensure resiliency under load. Practice hoe to manage automatic horizontal scaling through a set of declarative scaling rules.
 
-### Challenge 6: **[Header](Student/Challenge-06.md)**
+### Challenge 6: **[Jobs in Azure Container Apps](Student/Challenge-06.md)**
 
-- Description
+Not every container needs to be a long-running web service. Container Jobs let you run containerized tasks that execute for a finite duration and exit. In this challenge, you will learn how to deploy a container job.
 
-### (Optional) Challenge 7: **[Header](Student/Challenge-07.md)**
+### Challenge 7: **[Data Volumes with Azure Files](Student/Challenge-07.md)**
 
-- Description
+Many applications requires storage. Azure Container Apps support ephemeral storage and mounting Azure Files as data volumes. In this challenge, you will enable persistent storage for your containerized app.
 
-### Challenge 8: **[Header](Student/Challenge-08.md)**
+### Challenge 8: **[Adding Environment Variables and Secrets](Student/Challenge-08.md)**
 
-- Description
+Securely setting configuration values is key to robust applications. You will learn how to pass environment variables and manage secrets in your container apps, reducing hard-coded configurations
 
-### Challenge 9: **[Header](Student/Challenge-09.md)**
+### Challenge 9: **[Implementing CI/CD with GitHub Actions](Student/Challenge-09.md)**
 
-- Description
+To achieve agile development, it is essential to automate your builds and deployments. In this challenge, you will create a GitHub Actions workflow that automatically builds and deploys your container app upon code changes.
 
-### Challenge 10: **[Header](Student/Challenge-10.md)**
+### Challenge 10: **[Publisher and subscriber microservices that leverage the Dapr Pub/sub API](Student/Challenge-10.md)**
 
-- Description
+Dapr (Distributed Application Runtime) is an open-source, portable runtime that simplifies building microservices by abstracting common patterns such as state management, pub/sub, and service invocation. In this challenge, you will create publisher and subscriber microservices that leverage the Dapr Pub/sub API to communicate using messages for event-driven architectures. 
 
-### Challenge 11: **[Header](Student/Challenge-10.md)**
+### Challenge 11: **[Implement an Event-Driven App with Dapr and KEDA](Student/Challenge-11.md)**
 
-- Description
-
-### Challenge 12: **[Header](Student/Challenge-10.md)**
-
-- Description
+- Capitalize on the event-driven architecture of Azure Container Apps by integrating KEDA (Kubernetes-based Event Driven Autoscaling) with Azure Service Bus. In this challenge, you’ll modify the previous checkout and processor application that responds to message queues, demonstrating real-time processing and dynamic scaling based on event load.
 
 ## References
 - [Azure Container Apps documentation](https://learn.microsoft.com/en-us/azure/container-apps/)
