@@ -1,50 +1,43 @@
-# Challenge 11 - Publisher and subscriber microservices that leverage the Dapr Pub/sub API
+# Challenge 11 - Implement an Event-Driven App with Dapr and KEDA
 
  [< Previous Challenge](./Challenge-10.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-12.md)
 
 ## Introduction
-Dapr (Distributed Application Runtime) is an open-source, portable runtime that simplifies building microservices by abstracting common patterns such as state management, pub/sub, and service invocation. 
+Capitalize on the event-driven architecture of Azure Container Apps by integrating KEDA (Kubernetes-based Event Driven Autoscaling) with Azure Service Bus. In this challenge, you’ll modify the previous checkout and processor application that responds to message queues, demonstrating real-time processing and dynamic scaling based on event load.
 
-In this challenge, you will create publisher and subscriber microservices that leverage the Dapr Pub/sub API to communicate using messages for event-driven architectures. 
+Azure Container Apps automatically scales HTTP traffic to zero. However, to scale non-HTTP traffic (like Dapr pub/sub and bindings), you can use KEDA scalers to scale your application and its Dapr sidecar up and down, based on the number of pending inbound events and messages.
 
-![Dapr Pub/Sub](Resources/Challenge-11/pubsub-quickstart.png)
+This guide demonstrates how to configure the scale rules of a Dapr pub/sub application with a KEDA messaging scaler. 
 
-In this challenge you will do the following:
-- Use a **Publisher** microservice that generates and sends messages (such as order checkout events) to a specific topic.
-- Use a **Subscriber** microservice that listens for these messages from Azure Service Bus and processes them (for example, to process orders).
-- Deploy the application to Azure Container Apps via the Azure Developer CLI with provided Bicep
-- Verify end-to-end messaging by triggering the publisher and confirming that the subscriber receives and processes the messages.
+For context, refer to the corresponding sample pub/sub applications. In this sample application, the application uses the following elements:
 
-You shall use [this sample pub/sub project](https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus) which includes:
-- A message generator checkout service (publisher) that generates messages of a specific topic.
-- An order-processor service (subscriber) that listens for messages from the checkout service of a specific topic.
-
-In this sample project, you'll create a publisher microservice and a subscriber microservice to demonstrate how Dapr enables a publish-subcribe pattern. The publisher will generate messages of a specific topic, while subscribers will listen for messages of specific topics
+- The checkout publisher is an application that is meant to run indefinitely and never scale down to zero, despite never receiving any incoming HTTP traffic.
+- The Dapr Azure Service Bus pub/sub component.
+- An order-processor subscriber container app picks up messages received via the orders topic and processed as they arrive.
+- The scale rule for Azure Service Bus, which is responsible for scaling up the order-processor service and its Dapr sidecar when messages start to arrive to the orders topic.
+![Scaling Dapr with KEDA](../Resources/Images/scaling-dapr-apps-keda.png)
 
 ## Description
-- **Configure Dapr for Azure Service Bus Pub/Sub:**  
-  - Install all necessary prerequisites
-  - Create or update a Dapr component YAML file that configures Azure Service Bus as the pub/sub broker.
-  - The configuration should include the connection string and other required settings for Azure Service Bus.
+- Make all necessary changes to order-processor subscriber app to include a custom scale rule that monitors a resource of type azure-servicebus. With this rule, the app (and its sidecar) scales up and down as needed based on the number of pending messages in the Bus.
+- Configure the app to scale from 0 to 10 replicas
+- Configure the messageCount property on the scaler's configuration in the subscriber app to 2. This property tells the scaler how many messages each instance of the application can process at the same time.
+- For KEDA scaler authentication parameters use the Container Apps secrets for accessing the Service Bus.
 
-- **Develop or use sample Microservices:**  
-  - **Publisher Service:** Implement or use the sample microservice that uses Dapr’s HTTP API to publish messages to a designated topic. For example, the service could send order checkout events.
-  - **Subscriber Service:** Implement or use the sample microservice that subscribes to the same topic. The Dapr sidecar will forward published messages from Azure Service Bus to this service for processing.
+>[!NOTE]
+> Container Apps scale rules support secrets-based authentication. Scale rules for Azure resources, including Azure Queue Storage, Azure Service Bus, and Azure Event Hubs, also support managed identity. In production environments it's preferred to use managed identity authentication to avoid storing secrets within the app.
 
-- **Deployment:**  
-  - Package your microservices and deploy them to Azure Container Apps with Dapr enabled.
-  OR
-  - Use the sample project provided to deploy the application template using Azure Developer CLI
-  
 ## Success Criteria
-- The publisher microservice successfully publishes messages to the specified topic using Dapr’s API.
-- The subscriber microservice receives and processes the messages, with confirmation via logs or telemetry.
-- The microservices are deployed to Azure Container Apps with Dapr enabled and properly configured for pub/sub messaging.
-- Validate that the entire message flow is handled by Dapr and Azure Service Bus, ensuring reliable event-driven communication.
+- The order-processor subscriber container app can consume events added in Service Bus topic.
+- Ensure that the Container App can scale based on real-time topic metrics.
+- Ensure that the Container App can scale to 0.
+>[!TIP]
+> You can stop the checkout app to stop sending events in Service Bus topic.
+- The application processes events and logs output as expected.
 
 ## Learning Resources
-- [Tutorial: Microservices communication using Dapr Publish and Subscribe](https://learn.microsoft.com/en-us/azure/container-apps/microservices-dapr-pubsub?tabs=windows&pivots=csharp)
-- [Using Dapr with Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/)
-- [Getting Started with Dapr](https://docs.dapr.io/getting-started/)
-- [GitHub Dapr Quickstarts](https://github.com/dapr/quickstarts)
-- [Dapr Quickstarts](https://docs.dapr.io/getting-started/quickstarts/)
+
+- [Scale Dapr applications with KEDA scalers](https://learn.microsoft.com/en-us/azure/container-apps/dapr-keda-scaling)
+- [Set scaling rules in Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/scale-app?pivots=azure-portal#custom)
+- [KEDA Azure Service Bus scaler ](https://keda.sh/docs/2.17/scalers/azure-service-bus/)
+- [KEDA Overview ](https://keda.sh/)
+- [KEDA Scalers](https://keda.sh/docs/2.17/scalers/)

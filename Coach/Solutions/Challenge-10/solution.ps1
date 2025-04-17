@@ -1,2 +1,2 @@
-# For instructions of how to Deploy to Azure Container Apps with GitHub Actions, use the following link: 
-# https://learn.microsoft.com/en-us/azure/container-apps/github-actions
+# For instructions of how to create Publisher and subscriber microservices that leverage the Dapr Pub/sub API, use the following link: 
+# https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus

@@ -1,40 +1,57 @@
-# Challenge 07 - Jobs in Azure Container Apps
+# Challenge 07 - Data Volumes with Azure Files
 
  [< Previous Challenge](./Challenge-06.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-08.md)
 
 ## Introduction
-Not every container needs to be a long-running web service. Container Jobs let you run containerized tasks that execute for a finite duration and exit. In this challenge, you will learn how to deploy a container job.
+Many applications requires storage. Azure Container Apps support ephemeral storage and mounting Azure Files as data volumes. In this challenge, you will enable persistent storage for your containerized app.
 
-You can use jobs to perform tasks such as data processing, machine learning, or any scenario where on-demand processing is required.
+A container app has access to different types of storage.
 
-Azure Container Apps provide two types of compute resources: apps and jobs. Apps run continuously and restart automatically if a container fails, suitable for HTTP APIs, web apps, and background services. Jobs run for a finite duration, handling a single unit of work, and can be started manually, scheduled, or triggered by events, ideal for batch processes and scheduled tasks.
+### Ephemeral storage
+A container app can utilize ephemeral storage for temporary data. This storage can be assigned either to a container or a replica. The total amount of storage available to each replica is determined by the number of vCPUs allocated to it.
+#### Container-scoped storage
+A container can write to its own file system.
+Container file system storage has the following characteristics:
+- The storage is temporary and disappears when the container is shut down or restarted.
+- Files written to this storage are only visible to processes running in the current container.
 
-### Job trigger types
-A job's trigger type determines how the job is started. The following trigger types are available:
-- **Manual**: Manual jobs are triggered on-demand.
-- **Schedule**: Scheduled jobs are triggered at specific times and can run repeatedly.
-- **Event**: Events, such as a message arriving in a queue, trigger event-driven jobs. Examples of event-driven jobs include:
-    - A job that runs when a new message is added to a queue such as Azure Service Bus, Kafka, or RabbitMQ.
-    - A self-hosted GitHub Actions runner or Azure DevOps agent that runs when a new job is queued in a workflow or pipeline.
+#### Replica-scoped storage
+You can mount an ephemeral, temporary volume that is equivalent to EmptyDir (empty directory) in Kubernetes. This storage is scoped to a single replica. 
+- Files are persisted for the lifetime of the replica. If a container in a replica restarts, the files in the volume remain.
+- Any init or app containers in the replica can mount the same volume.
+- A container can mount multiple EmptyDir volumes.
 
-    Container apps and event-driven jobs use KEDA scalers. They both evaluate scaling rules on a polling interval to measure the volume of events for an event source, but the way they use the results is different.
-
-    In an app, each replica continuously processes events and a scaling rule determines the number of replicas to run to meet demand. In event-driven jobs, each job execution typically processes a single event, and a scaling rule determines the number of job executions to run.
-
-> [!TIP]
-> Use jobs when each event requires a new instance of the container with dedicated resources or needs to run for a long time. Event-driven jobs are conceptually similar to KEDA scaling jobs.
+### Azure Files volume
+You can mount a file share from Azure Files as a volume in a container.
+Azure Files storage has the following characteristics:
+- Files written under the mount location are persisted to the file share.
+- Files in the share are available via the mount location.
+- Multiple containers can mount the same file share, including ones that are in another replica, revision, or container app.
+- All containers that mount the share can access files written by any other container or method.
+- More than one Azure Files volume can be mounted in a single container.
+Replica-scoped storage has the following characteristics:
 
 ## Description
-- Create a scheduled job that runs every 1 minute by using the public image mcr.microsoft.com/k8se/quickstart-jobs:latest. 
-- This container image is a public sample container image that runs a job that waits a few seconds, prints a message to the console, and then exits.
-- Check the schedules job output and status.
-- Trigger the scheduled task manually
+- Set up a storage account with the following parameters:
+    - Kind: StorageV2
+    - SKU: Standard_LRS
+    - Enable large file share
+- Create a publicly available container app with nginx image and set taRGET PORT TO PORT 80.
+- Mount the file share as a volume in your container app.
+    - Export the container app's configuration in yaml format
+    - Replace the volumes: definition in the template section with the volumes: definition referencing the storage volume.
+    - Add a volumeMounts section to the nginx container in the containers section.
+- Demonstrate persistence by writing data to the volume and showing it persists across container restarts.
+- Open an interactive shell inside the container app to execute commands inside the running container. List the values of the /var/log/nginx folder
+``` powershell
+az containerapp exec --name $CONTAINER_APP_NAME --resource-group $RESOURCE_GROUP
+```
 
 ## Success Criteria
-- Verify that the job is successfully scheduled and executed in execution history.
-- The task completes and its console output is verifiable.
-- List with Azure CLI the recent job execution history.
+- The Azure File share is successfully mounted.
+- Data written by your container app persists after restarts.
+- Verify the storage mount by executing a ls command in /var/log/nginx folder inside the running container.
 
 ## Learning Resources
-- [Jobs in Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/jobs)
-- [Tutorial: Deploy an event-driven job with Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/tutorial-event-driven-jobs)
+- [Use storage mounts in Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/storage-mounts?tabs=smb&pivots=azure-cli)
+- [Tutorial: Create an Azure Files volume mount in Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/storage-mounts-azure-files?tabs=bash)

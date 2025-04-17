@@ -1,70 +1,50 @@
-# Challenge 10 - Implementing CI/CD with GitHub Actions
+# Challenge 10 - Publisher and subscriber microservices that leverage the Dapr Pub/sub API
 
  [< Previous Challenge](./Challenge-09.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-11.md)
 
 ## Introduction
-To achieve agile development, it is essential to automate your builds and deployments. In this challenge, you will create a GitHub Actions workflow that automatically builds and deploys your container app upon code changes.
+Dapr (Distributed Application Runtime) is an open-source, portable runtime that simplifies building microservices by abstracting common patterns such as state management, pub/sub, and service invocation. 
 
-Azure Container Apps allows you to use GitHub Actions to publish revisions to your container app. As commits are pushed to your GitHub repository, a workflow is triggered which updates the container image in the container registry. Azure Container Apps creates a new revision based on the updated container image.
+In this challenge, you will create publisher and subscriber microservices that leverage the Dapr Pub/sub API to communicate using messages for event-driven architectures.
 
-![CI/CD Diagram](./Resources/Challenge-10/cicd-diagram.png)
+![Dapr Pub/Sub](../Resources/Images/pubsub-quickstart.png)
 
-The GitHub Actions workflow is triggered by commits to a specific branch in your repository. When creating the workflow, you decide which branch triggers the workflow.
+In this challenge you will do the following:
+- Use a **Publisher** microservice that generates and sends messages (such as order checkout events) to a specific topic.
+- Use a **Subscriber** microservice that listens for these messages from Azure Service Bus and processes them (for example, to process orders).
+- Deploy the application to Azure Container Apps via the Azure Developer CLI with provided Bicep
+- Verify end-to-end messaging by triggering the publisher and confirming that the subscriber receives and processes the messages.
 
-The action supports the following scenarios:
-- Build from a Dockerfile and deploy to Container Apps
-- Build from source code without a Dockerfile and deploy to Container Apps. Supported languages include .NET, Java, - Node.js, PHP, and Python
-- Deploy an existing container image to Container Apps
+You shall use [this sample pub/sub project](https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus) which includes:
+- A message generator checkout service (publisher) that generates messages of a specific topic.
+- An order-processor service (subscriber) that listens for messages from the checkout service of a specific topic.
 
-### Build and deploy to Container Apps
-The following snippet shows how to build a container image from source code and deploy it to Container Apps.
-```yaml
-name: Azure Container Apps Deploy
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Log in to Azure
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Build and deploy Container App
-        uses: azure/container-apps-deploy-action@v1
-        with:
-          appSourcePath: ${{ github.workspace }}/src
-          acrName: <ACR_NAME>
-          containerAppName: my-container-app
-          resourceGroup: my-container-app-rg
-```
-> [!NOTE]
-> The GitHub workflow requires a secret named AZURE_CREDENTIALS to authenticate with Azure, which has the necessary access to Azure Container Registry and Azure Container Apps
+In this sample project, you'll create a publisher microservice and a subscriber microservice to demonstrate how Dapr enables a publish-subcribe pattern. The publisher will generate messages of a specific topic, while subscribers will listen for messages of specific topics
 
 ## Description
-- Configure secrets in your GitHub repository
-- Create an Azure Container Registry and manage access accordingly
-- Create a GitHub Actions workflow file in your repository.
->[!TIP]
-> You can create a GitHub repository from the following sample: https://github.com/Azure-Samples/containerapps-albumapi-csharp/generate
-> The repository contains all project files to build and deploy the application
-- Configure the workflow to build your container image and deploy it to Azure Container Apps.
-- Test the workflow by pushing a code change and verifying a new deployment.
+- **Configure Dapr for Azure Service Bus Pub/Sub:**  
+  - Install all necessary prerequisites
+  - Create or update a Dapr component YAML file that configures Azure Service Bus as the pub/sub broker.
+  - The configuration should include the connection string and other required settings for Azure Service Bus.
 
+- **Develop or use sample Microservices:**  
+  - **Publisher Service:** Implement or use the sample microservice that uses Dapr’s HTTP API to publish messages to a designated topic. For example, the service could send order checkout events.
+  - **Subscriber Service:** Implement or use the sample microservice that subscribes to the same topic. The Dapr sidecar will forward published messages from Azure Service Bus to this service for processing.
+
+- **Deployment:**  
+  - Package your microservices and deploy them to Azure Container Apps with Dapr enabled.
+  OR
+  - Use the sample project provided to deploy the application template using Azure Developer CLI
+  
 ## Success Criteria
-- A GitHub Actions run completed succesfully.
-- Code changes automatically trigger a build and deployment.
-- The container app updates seamlessly based on the CI/CD process.
+- The publisher microservice successfully publishes messages to the specified topic using Dapr’s API.
+- The subscriber microservice receives and processes the messages, with confirmation via logs or telemetry.
+- The microservices are deployed to Azure Container Apps with Dapr enabled and properly configured for pub/sub messaging.
+- Validate that the entire message flow is handled by Dapr and Azure Service Bus, ensuring reliable event-driven communication.
 
 ## Learning Resources
-- [GitHub Actions for Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/github-actions)
-- [Introduction to GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions)
-- [Azure Container Apps Build and Deploy action](https://github.com/marketplace/actions/azure-container-apps-build-and-deploy)
+- [Tutorial: Microservices communication using Dapr Publish and Subscribe](https://learn.microsoft.com/en-us/azure/container-apps/microservices-dapr-pubsub?tabs=windows&pivots=csharp)
+- [Using Dapr with Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/)
+- [Getting Started with Dapr](https://docs.dapr.io/getting-started/)
+- [GitHub Dapr Quickstarts](https://github.com/dapr/quickstarts)
+- [Dapr Quickstarts](https://docs.dapr.io/getting-started/quickstarts/)
