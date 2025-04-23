@@ -1,6 +1,6 @@
 # Challenge 11 - Implement an Event-Driven App with Dapr and KEDA
 
- [< Previous Challenge](./Challenge-10.md) - **[Home](../README.md)**
+ [< Previous Challenge](./Challenge-10.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-12.md)
 
 ## Introduction
 Capitalize on the event-driven architecture of Azure Container Apps by integrating KEDA (Kubernetes-based Event Driven Autoscaling) with Azure Service Bus. In this challenge, you’ll modify the previous checkout and processor application that responds to message queues, demonstrating real-time processing and dynamic scaling based on event load.
