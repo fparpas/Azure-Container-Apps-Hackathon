@@ -66,7 +66,7 @@ When you are building applications, you want to be able to observe the behavior 
 
 ### Challenge 5: **[Scaling your application](Student/Challenge-05.md)**
 
-Explore the scaling mechanisms, to ensure resiliency under load. Practice hoe to manage automatic horizontal scaling through a set of declarative scaling rules.
+Explore the scaling mechanisms, to ensure resiliency under load. Practice how to manage automatic horizontal scaling through a set of declarative scaling rules.
 
 ### Challenge 6: **[Jobs in Azure Container Apps](Student/Challenge-06.md)**
 
@@ -74,11 +74,11 @@ Not every container needs to be a long-running web service. Container Jobs let y
 
 ### Challenge 7: **[Data Volumes with Azure Files](Student/Challenge-07.md)**
 
-Many applications requires storage. Azure Container Apps support ephemeral storage and mounting Azure Files as data volumes. In this challenge, you will enable persistent storage for your containerized app.
+Many applications requires storage. Azure Container Apps support ephemeral storage and mounting Azure Files as persistent storage data volumes. In this challenge, you will enable persistent storage for your containerized app.
 
 ### Challenge 8: **[Adding Environment Variables and Secrets](Student/Challenge-08.md)**
 
-Securely setting configuration values is key to robust applications. You will learn how to pass environment variables and manage secrets in your container apps, reducing hard-coded configurations
+Securely setting configuration values is key to robust applications. You will learn how to pass environment variables and manage secrets in your container apps, reducing hard-coded configurations.
 
 ### Challenge 9: **[Implementing CI/CD with GitHub Actions](Student/Challenge-09.md)**
 
@@ -90,7 +90,7 @@ Dapr (Distributed Application Runtime) is an open-source, portable runtime that 
 
 ### Challenge 11: **[Implement an Event-Driven App with Dapr and KEDA](Student/Challenge-11.md)**
 
-- Capitalize on the event-driven architecture of Azure Container Apps by integrating KEDA (Kubernetes-based Event Driven Autoscaling) with Azure Service Bus. In this challenge, you’ll modify the previous checkout and processor application that responds to message queues, demonstrating real-time processing and dynamic scaling based on event load.
+Capitalize on the event-driven architecture of Azure Container Apps by integrating KEDA (Kubernetes-based Event Driven Autoscaling) with Azure Service Bus. In this challenge, you’ll modify the previous checkout and processor application that responds to message queues, demonstrating real-time processing and dynamic scaling based on event load.
 
 ### (Optional) Challenge 12: **[Protect Azure Container Apps with WAF on Application Gateway](Student/Challenge-12.md)**
 
