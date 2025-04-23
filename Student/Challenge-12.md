@@ -48,3 +48,4 @@ Reverse proxies allow you to place services in front of your apps that supports 
 - [Provide a virtual network to an Azure Container Apps environment](https://learn.microsoft.com/en-us/azure/container-apps/vnet-custom?tabs=bash&pivots=azure-portal)
 - [Azure Application Gateway Overview](https://learn.microsoft.com/en-us/azure/application-gateway/overview)
 - [Web Application Firewall in Azure](https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/ag-overview)
+- [Azure security baseline for Azure Container Apps](https://learn.microsoft.com/en-us/security/benchmark/azure/baselines/azure-container-apps-security-baseline)
