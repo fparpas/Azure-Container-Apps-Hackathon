@@ -18,6 +18,7 @@ Upon completing the workshop, participants will be able to:
 -	Create event-driven architectures with Dapr Pub/sub API.
 - Demonstrating real-time processing and dynamic scaling based on event load with KEDA and Service Bus topics.
 -	Establish CI/CD pipelines with GitHub Actions for seamless container app deployments.
+- Protect Azure Container Apps with Web Application Firewall on Application Gateway
 
   
 ## Prerequisites
@@ -90,6 +91,10 @@ Dapr (Distributed Application Runtime) is an open-source, portable runtime that 
 ### Challenge 11: **[Implement an Event-Driven App with Dapr and KEDA](Student/Challenge-11.md)**
 
 - Capitalize on the event-driven architecture of Azure Container Apps by integrating KEDA (Kubernetes-based Event Driven Autoscaling) with Azure Service Bus. In this challenge, you’ll modify the previous checkout and processor application that responds to message queues, demonstrating real-time processing and dynamic scaling based on event load.
+
+### (Optional) Challenge 12: **[Protect Azure Container Apps with WAF on Application Gateway](Student/Challenge-12.md)**
+
+Enhance your container apps’ security by integrating a Web Application Firewall on an Application Gateway. In this challenge, you will also provide a Virtual Network for your Container Apps environment to securely isolate and control network traffic.
 
 ## References
 - [Azure Container Apps documentation](https://learn.microsoft.com/en-us/azure/container-apps/)
