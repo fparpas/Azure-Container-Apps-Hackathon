@@ -26,14 +26,4 @@ Learn how container apps support microservices architectures, how they leverage 
 
 ## Learning Resources
 - [What are Azure Container Apps?](https://learn.microsoft.com/en-us/azure/container-apps/overview)
-- [Comparing Container Apps with other Azure container options](https://learn.microsoft.com/en-us/azure/container-apps/compare-options)
 - [ACA vs AKS: Which Azure Service Is Better for Running Containers?](https://techcommunity.microsoft.com/blog/startupsatmicrosoftblog/aca-vs-aks-which-azure-service-is-better-for-running-containers/3815164)
-- [Compare container apps and jobs](https://learn.microsoft.com/en-us/azure/container-apps/jobs?tabs=azure-cli#compare-container-apps-and-jobs)
-- [Azure Container Apps documentation](https://learn.microsoft.com/en-us/azure/container-apps/)
-    - [Plans](https://learn.microsoft.com/en-us/azure/container-apps/plans)
-    - [Environments](https://learn.microsoft.com/en-us/azure/container-apps/environment)
-    - [Containers](https://learn.microsoft.com/en-us/azure/container-apps/containers)
-    - [Revisions](https://learn.microsoft.com/en-us/azure/container-apps/revisions)
-    - [Application lifecycle management](https://learn.microsoft.com/en-us/azure/container-apps/application-lifecycle-management)
-    - [Scaling](https://learn.microsoft.com/en-us/azure/container-apps/scale-app)
-    - [Ingress](https://learn.microsoft.com/en-us/azure/container-apps/ingress-overview)
