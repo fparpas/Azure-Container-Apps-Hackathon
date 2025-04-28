@@ -2,7 +2,7 @@
 
 This hackathon will provide a deep dive experience of building and deploying containerized applications in Azure Container Apps.
 
-Hackathon is a collaborative learning experience, designed as a set of challenges to practice your technical skills. By participating in this hackathon, you will be able to understand the capabilities of Azure Container Apps.
+The hackathon is a collaborative learning experience, designed as a set of challenges to practice your technical skills. By participating in this hackathon, you will be able to understand the capabilities of Azure Container Apps.
 
 This workshop requires two full days to finish depending on the attendees' skill level. It is a collaborative activity where attendees form teams of 3-5 people to go through every workshop.
   
@@ -16,14 +16,14 @@ Upon completing the workshop, participants will be able to:
 -	Configure autoscaling and resiliency to ensure high availability.
 -	Integrate persistent storage using Azure Files and securely manage configuration with environment variables and secrets.
 -	Create event-driven architectures with Dapr Pub/sub API.
-- Demonstrating real-time processing and dynamic scaling based on event load with KEDA and Service Bus topics.
+- Demonstrate real-time processing and dynamic scaling based on event load with KEDA and Service Bus topics.
 -	Establish CI/CD pipelines with GitHub Actions for seamless container app deployments.
 - Protect Azure Container Apps with Web Application Firewall on Application Gateway
 
   
 ## Prerequisites
 -	Familiarity with containerized applications
--	Experience in programming, preferable with C# or Python
+-	Experience in programming, preferably with C# or Python
 -	Your laptop (development machine): Win, MacOS or Linux that you have administrator rights.
 -	Active Azure Subscription with Contributor access to create or modify resources.
 -	Latest version of Azure CLI
@@ -31,7 +31,7 @@ Upon completing the workshop, participants will be able to:
 -	GitHub account
 
 ## Target Audience
-The intended audience os ideal for:
+The intended audience is ideal for:
 - DevOps Engineers
 - Software Developers
 - Solution Architects
@@ -74,7 +74,7 @@ Not every container needs to be a long-running web service. Container Jobs let y
 
 ### Challenge 7: **[Data Volumes with Azure Files](Student/Challenge-07.md)**
 
-Many applications requires storage. Azure Container Apps support ephemeral storage and mounting Azure Files as persistent storage data volumes. In this challenge, you will enable persistent storage for your containerized app.
+Many applications require storage. Azure Container Apps support ephemeral storage and mounting Azure Files as persistent storage data volumes. In this challenge, you will enable persistent storage for your containerized app.
 
 ### Challenge 8: **[Adding Environment Variables and Secrets](Student/Challenge-08.md)**
 
