@@ -9,7 +9,7 @@ You have several options available as you develop and deploy your apps to Azure 
 
 
 ## Description
-- Deploy a Container App using the public image: mcr.microsoft.com/k8se/quickstart:latest and set target port to port 80
+- Deploy a Container App using the public image: `mcr.microsoft.com/k8se/quickstart:latest` and set target port to port 80
 - Choose one of the following methods for your first deployment
     - Using the Azure Portal
     - Using Azure CLI -> az containerapp up
