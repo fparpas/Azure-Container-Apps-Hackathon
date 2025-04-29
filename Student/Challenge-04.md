@@ -28,7 +28,6 @@ Azure Container Apps (ACA) provides several built-in observability features that
 - View the container app system or console log stream via the Azure CLI.
 - View the container's console using the Azure portal.
 - Query system logs with Log Analytics in the Azure Portal.
-- Demonstrate the retrieval of key metrics and logs from your container app.
 - (Optional) Review the logging and telemetry for your Container App within Application Insights.
 
 ## Learning Resources
