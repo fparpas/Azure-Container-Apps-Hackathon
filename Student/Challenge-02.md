@@ -23,7 +23,7 @@ You have several options available as you develop and deploy your apps to Azure 
 - Explain the differences of the three deployment options mentioned above
 
 ## Learning Resources
-- [Quickstart: Deploy your first container app using the Azure portal](https://learn.microsoft.com/en-us/azure/container-apps/get-started)
+- [Quickstart: Deploy your first container app using the Azure portal](https://learn.microsoft.com/en-us/azure/container-apps/quickstart-portal)
 - [Quickstart: Deploy your first container app with az containerapp up](https://learn.microsoft.com/en-us/azure/container-apps/get-started?tabs=bash)
 - [Tutorial: Deploy your first container app with az containerapp create](https://learn.microsoft.com/en-us/azure/container-apps/tutorial-deploy-first-app-cli?tabs=bash)
 - [Azure CLI for Container Apps](https://learn.microsoft.com/en-us/cli/azure/containerapp)
