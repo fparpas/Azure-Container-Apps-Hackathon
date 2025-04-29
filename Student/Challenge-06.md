@@ -33,6 +33,7 @@ A job's trigger type determines how the job is started. The following trigger ty
 ## Success Criteria
 - Verify that the job is successfully scheduled and executed in the execution history.
 - Ensure the task completes and its console output is verifiable.
+- Manually trigger the scheduled task and verify its execution and output.
 - Use the Azure CLI to list the recent job execution history.
 
 ## Learning Resources
