@@ -3,9 +3,9 @@
  [< Previous Challenge](./Challenge-00.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-02.md)
 
 ## Introduction
-Welcome to the Azure Container Apps hackathon! In this challenge, you will get an overview of Azure Container Apps. A managed, serverless container orchestration service that abstracts away infrastructure concerns.
+Welcome to the Azure Container Apps hackathon! In this challenge, you will get an overview of Azure Container Apps. It's time for some reading—dive into the concepts to understand how this managed, serverless container orchestration service abstracts away infrastructure concerns.
 
-Learn how container apps support microservices architectures, how they leverage Kubernetes under the hood, and how they provide features like scaling, ingress, and revision management without the overhead of managing clusters.
+You will learn how container apps support microservices architectures, how they leverage Kubernetes under the hood, and how they provide features like scaling, ingress, and revision management without the overhead of managing clusters.
 
 ## Description
 - Research and review the key concepts behind Azure Container Apps.
