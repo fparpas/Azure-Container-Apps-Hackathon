@@ -16,7 +16,9 @@ Container file system storage has the following characteristics:
 - Files written to this storage are only visible to processes running in the current container.
 
 #### Replica-scoped storage
-You can mount an ephemeral, temporary volume that is equivalent to EmptyDir (empty directory) in Kubernetes. This storage is scoped to a single replica. 
+You can mount an ephemeral, temporary volume that is equivalent to EmptyDir (empty directory) in Kubernetes. This storage is scoped to a single replica.
+
+Replica-scoped storage has the following characteristics: 
 - Files are persisted for the lifetime of the replica. If a container in a replica restarts, the files in the volume remain.
 - Any init or app containers in the replica can mount the same volume.
 - A container can mount multiple EmptyDir volumes.
@@ -29,7 +31,7 @@ Azure Files storage has the following characteristics:
 - Multiple containers can mount the same file share, including ones that are in another replica, revision, or container app.
 - All containers that mount the share can access files written by any other container or method.
 - More than one Azure Files volume can be mounted in a single container.
-Replica-scoped storage has the following characteristics:
+
 
 ## Description
 - Set up a storage account with the following parameters:
