@@ -14,15 +14,24 @@ You will learn how container apps support microservices architectures, how they 
 
 ## Success Criteria
 - Explain what Azure Container Apps are and [how they compare](https://learn.microsoft.com/en-us/azure/container-apps/compare-options) to other container hosting options. Compare ACA to AKS, App Service and Azure Functions.
-- Explain the key features of:
+- Answer the following questions and explain the key features of:
     - [Plans](https://learn.microsoft.com/en-us/azure/container-apps/plans)
+        - What are workload profiles?
+        - What is the difference between the Dedicated and Consumption plans?
     - [Environments](https://learn.microsoft.com/en-us/azure/container-apps/environment)
+        - What are the different types of environments?
     - [Containers](https://learn.microsoft.com/en-us/azure/container-apps/containers)
+        - Can you run multiple containers in a single container app? When should you use this pattern?
     - [Revisions](https://learn.microsoft.com/en-us/azure/container-apps/revisions)
+        - What are the available revision modes?
+        - What is the difference between revision scope and application scope changes?
     - [Application lifecycle management](https://learn.microsoft.com/en-us/azure/container-apps/application-lifecycle-management)
     - [Scaling](https://learn.microsoft.com/en-us/azure/container-apps/scale-app)
+        - Explain the differences between scaling categories.
     - [Ingress](https://learn.microsoft.com/en-us/azure/container-apps/ingress-overview)
-- Explain and [compare container apps and jobs](https://learn.microsoft.com/en-us/azure/container-apps/jobs?tabs=azure-cli#compare-container-apps-and-jobs).
+        - What protocol types are supported in ACA Ingress?
+        - Explain the difference between external and internal ingress.
+    - Explain and [compare container apps and jobs](https://learn.microsoft.com/en-us/azure/container-apps/jobs?tabs=azure-cli#compare-container-apps-and-jobs).
 
 ## Learning Resources
 - [What are Azure Container Apps?](https://learn.microsoft.com/en-us/azure/container-apps/overview)
